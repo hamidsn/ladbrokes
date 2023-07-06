@@ -47,7 +47,11 @@ Content-type: application/json
    application/json
 ```
 
-[![Video](https://www.youtube.com/shorts/cEBaXRL0iy0)
+
+https://github.com/hamidsn/ladbrokes/assets/4980885/6b257768-968a-45f4-9a3a-eddba4472a43
+
+
+
 
 ## Technologies & Methodologies which used:
 -	Jetpack Compose
