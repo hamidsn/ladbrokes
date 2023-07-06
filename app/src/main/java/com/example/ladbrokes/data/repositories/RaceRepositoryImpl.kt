@@ -62,17 +62,17 @@ class RaceRepositoryImpl @Inject constructor(
 
         val predicates: List<(Race) -> Boolean> = listOf(
             { race: Race ->
-                if (!noFilters && race.category_id == GREYHOUND_CATEGORY_ID) {
+                if (!noFilters && race.categoryId == GREYHOUND_CATEGORY_ID) {
                     filterList[0]
                 } else true
             },
             { race: Race ->
-                if (!noFilters && race.category_id == HARNESS_CATEGORY_ID) {
+                if (!noFilters && race.categoryId == HARNESS_CATEGORY_ID) {
                     filterList[1]
                 } else true
             },
             { race: Race ->
-                if (!noFilters && race.category_id == HORSE_CATEGORY_ID) {
+                if (!noFilters && race.categoryId == HORSE_CATEGORY_ID) {
                     filterList[2]
                 } else true
             }

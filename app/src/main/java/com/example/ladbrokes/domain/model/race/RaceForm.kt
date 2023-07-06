@@ -1,16 +1,27 @@
 package com.example.ladbrokes.domain.model.race
 
+import com.google.gson.annotations.SerializedName
+
 data class RaceForm(
-    val additional_data: String,
+    @SerializedName("additional_data")
+    val additionalData: String,
     val distance: Int,
-    val distance_type: DistanceType,
-    val distance_type_id: String,
+    @SerializedName("distance_type")
+    val distanceType: DistanceType,
+    @SerializedName("distance_type_id")
+    val distanceTypeId: String,
     val generated: Int,
-    val race_comment: String,
-    val race_comment_alternative: String,
-    val silk_base_url: String,
-    val track_condition: TrackCondition,
-    val track_condition_id: String,
+    @SerializedName("race_comment")
+    val raceComment: String,
+    @SerializedName("race_comment_alternative")
+    val raceCommentAlternative: String,
+    @SerializedName("silk_base_url")
+    val silkBaseUrl: String,
+    @SerializedName("track_condition")
+    val trackCondition: TrackCondition,
+    @SerializedName("track_condition_id")
+    val trackConditionId: String,
     val weather: Weather,
-    val weather_id: String
+    @SerializedName("weather_id")
+    val weatherId: String
 )

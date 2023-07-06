@@ -8,7 +8,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
-import com.example.ladbrokes.ui.race.home.HomeScreen
+import com.example.ladbrokes.ui.race.home.composables.HomeScreen
 
 @Composable
 fun LadbrokesNavGraph(

@@ -1,16 +1,30 @@
 package com.example.ladbrokes.domain.model.race
 
+import com.google.gson.annotations.SerializedName
+
 data class SubData(
-    val advertised_start: AdvertisedStart,
-    val category_id: String,
-    val meeting_id: String,
-    val meeting_name: String,
-    val race_form: RaceForm,
-    val race_id: String,
-    val race_name: String,
-    val race_number: Int,
-    val venue_country: String,
-    val venue_id: String,
-    val venue_name: String,
-    val venue_state: String
+    @SerializedName("advertised_start")
+    val advertisedStart: AdvertisedStart,
+    @SerializedName("category_id")
+    val categoryId: String,
+    @SerializedName("meeting_id")
+    val meetingId: String,
+    @SerializedName("meeting_name")
+    val meetingName: String,
+    @SerializedName("race_form")
+    val raceForm: RaceForm,
+    @SerializedName("race_id")
+    val raceId: String,
+    @SerializedName("race_name")
+    val raceName: String,
+    @SerializedName("race_number")
+    val raceNumber: Int,
+    @SerializedName("venue_country")
+    val venueCountry: String,
+    @SerializedName("venue_id")
+    val venueId: String,
+    @SerializedName("venue_name")
+    val venueName: String,
+    @SerializedName("venue_state")
+    val venueState: String
 )

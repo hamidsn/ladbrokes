@@ -1,4 +1,4 @@
-package com.example.ladbrokes.ui.race.home.components
+package com.example.ladbrokes.ui.race.home.composables
 
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.clickable
@@ -82,7 +82,7 @@ fun RaceItem(
                         .fillMaxWidth()
                 ) {
                     Text(
-                        text = "Race number: ${item.race_number}",
+                        text = "Race number: ${item.raceNumber}",
                         overflow = TextOverflow.Ellipsis,
                         fontSize = textSize,
                         onTextLayout = { textLayoutResult ->
@@ -95,7 +95,7 @@ fun RaceItem(
                     )
                     CompositionLocalProvider(LocalContentAlpha provides ContentAlpha.medium) {
                         Text(
-                            text = item.meeting_name,
+                            text = item.meetingName,
                             style = MaterialTheme.typography.caption
                         )
                     }
@@ -107,7 +107,7 @@ fun RaceItem(
                         .fillMaxWidth()
                 ) {
                     Text(
-                        text = "Race number: ${item.race_number}, ",
+                        text = "Race number: ${item.raceNumber}, ",
                         overflow = TextOverflow.Ellipsis,
                         fontSize = textSize,
                         onTextLayout = { textLayoutResult ->
@@ -121,7 +121,7 @@ fun RaceItem(
                     )
                     CompositionLocalProvider(LocalContentAlpha provides ContentAlpha.medium) {
                         Text(
-                            text = item.meeting_name,
+                            text = item.meetingName,
                             style = MaterialTheme.typography.caption
                         )
                     }

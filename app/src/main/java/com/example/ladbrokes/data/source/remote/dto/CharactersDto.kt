@@ -1,5 +1,6 @@
 package com.example.ladbrokes.data.source.remote.dto
 
+import android.util.Log
 import com.example.ladbrokes.domain.model.race.Data
 import com.example.ladbrokes.domain.model.race.Race
 
@@ -10,12 +11,19 @@ data class CharactersDto(
 )
 
 fun CharactersDto.toListCharacters(): List<Race> {
+
+    var o = data.race_summaries.size.toString()
+    Log.d("", "ooooo-race_summaries-" + o)
+
+    o = data.next_to_go_ids.size.toString()
+    Log.d("", "ooooo-next_to_go_ids-" + o)
+
     val resultEntries = data.race_summaries.map { entries ->
         Race(
-            category_id = entries.value.category_id,
-            meeting_name = entries.value.meeting_name,
-            race_number = entries.value.race_number,
-            seconds = entries.value.advertised_start.seconds.toLong()
+            categoryId = entries.value.categoryId,
+            meetingName = entries.value.meetingName,
+            raceNumber = entries.value.raceNumber,
+            seconds = entries.value.advertisedStart.seconds.toLong()
         )
     }
     return resultEntries

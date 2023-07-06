@@ -1,4 +1,4 @@
-package com.example.ladbrokes.ui.race.home
+package com.example.ladbrokes.ui.race.home.composables
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -41,7 +41,7 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.ladbrokes.R
 import com.example.ladbrokes.domain.model.race.Race
-import com.example.ladbrokes.ui.race.home.components.RaceItem
+import com.example.ladbrokes.ui.race.home.HomeViewModel
 import kotlinx.coroutines.flow.collectLatest
 
 @Composable

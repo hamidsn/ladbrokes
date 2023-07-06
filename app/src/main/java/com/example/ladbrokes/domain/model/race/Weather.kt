@@ -1,8 +1,12 @@
 package com.example.ladbrokes.domain.model.race
 
+import com.google.gson.annotations.SerializedName
+
 data class Weather(
-    val icon_uri: String,
+    @SerializedName("icon_uri")
+    val iconUri: String,
     val id: String,
     val name: String,
-    val short_name: String
+    @SerializedName("short_name")
+    val shortName: String
 )
