@@ -18,7 +18,7 @@ object RemoteModule {
     @Singleton
     fun provideLadbrokesApi(): LadbrokesApi {
         return Retrofit.Builder()
-            .baseUrl(BuildConfig.BASE_URL) //todo doc
+            .baseUrl(BuildConfig.BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(LadbrokesApi::class.java)
