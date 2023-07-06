@@ -45,9 +45,9 @@ import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.ladbrokes.R
-import com.example.ladbrokes.domain.model.race.Race
 import com.example.ladbrokes.data.EXPIRED_DISPLAY_TIME
 import com.example.ladbrokes.data.MILLI_SECONDS
+import com.example.ladbrokes.domain.model.race.Race
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.isActive

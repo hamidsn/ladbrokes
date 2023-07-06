@@ -104,9 +104,11 @@ private fun HomeTopBar(
                     .wrapContentSize(Alignment.Center)
             )
         },
-        modifier = Modifier.semantics {
-            heading()
-        }.testTag("top bar"),
+        modifier = Modifier
+            .semantics {
+                heading()
+            }
+            .testTag("top bar"),
         backgroundColor = MaterialTheme.colors.surface
     )
 }

@@ -1,9 +1,9 @@
 package com.example.ladbrokes.domain.use_case
 
+import com.example.ladbrokes.data.NUMBER_OF_RACES
 import com.example.ladbrokes.data.Result
 import com.example.ladbrokes.domain.model.race.Race
 import com.example.ladbrokes.domain.repositories.RaceRepository
-import com.example.ladbrokes.data.NUMBER_OF_RACES
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
