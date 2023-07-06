@@ -46,6 +46,9 @@ Content-type: application/json
    #Content-type: 
    application/json
 ```
+
+<img src="screenshots/timing-filter.gif"/>
+
 ## Technologies & Methodologies which used:
 -	Jetpack Compose
 -	Coroutines
