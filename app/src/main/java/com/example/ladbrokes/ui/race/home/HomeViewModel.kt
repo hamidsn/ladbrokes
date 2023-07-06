@@ -7,9 +7,9 @@ import com.example.ladbrokes.domain.model.race.Race
 import com.example.ladbrokes.domain.use_case.GetCategoryFilteredRacesUseCase
 import com.example.ladbrokes.domain.use_case.GetRacesUseCase
 import com.example.ladbrokes.domain.use_case.GetTimeFilteredRacesUseCase
-import com.example.ladbrokes.util.EXPIRED_DISPLAY_TIME
-import com.example.ladbrokes.util.MILLI_SECONDS
-import com.example.ladbrokes.util.NUMBER_OF_DISPLAYED_RACES
+import com.example.ladbrokes.data.EXPIRED_DISPLAY_TIME
+import com.example.ladbrokes.data.MILLI_SECONDS
+import com.example.ladbrokes.data.NUMBER_OF_DISPLAYED_RACES
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
@@ -115,7 +115,6 @@ class HomeViewModel @Inject constructor(
                                 )
                             )
                         }
-
                     }
 
                     is Result.Error -> {

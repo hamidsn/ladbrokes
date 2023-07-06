@@ -5,10 +5,10 @@ import com.example.ladbrokes.data.source.remote.LadbrokesApi
 import com.example.ladbrokes.data.source.remote.dto.toListCharacters
 import com.example.ladbrokes.domain.model.race.Race
 import com.example.ladbrokes.domain.repositories.RaceRepository
-import com.example.ladbrokes.util.GREYHOUND_CATEGORY_ID
-import com.example.ladbrokes.util.HARNESS_CATEGORY_ID
-import com.example.ladbrokes.util.HORSE_CATEGORY_ID
-import com.example.ladbrokes.util.NUMBER_OF_DISPLAYED_RACES
+import com.example.ladbrokes.data.GREYHOUND_CATEGORY_ID
+import com.example.ladbrokes.data.HARNESS_CATEGORY_ID
+import com.example.ladbrokes.data.HORSE_CATEGORY_ID
+import com.example.ladbrokes.data.NUMBER_OF_DISPLAYED_RACES
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import retrofit2.HttpException

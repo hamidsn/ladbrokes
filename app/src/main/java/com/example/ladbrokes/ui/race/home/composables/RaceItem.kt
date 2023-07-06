@@ -1,5 +1,6 @@
 package com.example.ladbrokes.ui.race.home.composables
 
+import android.text.format.DateUtils
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
@@ -34,6 +35,7 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
@@ -44,9 +46,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.ladbrokes.R
 import com.example.ladbrokes.domain.model.race.Race
-import com.example.ladbrokes.util.EXPIRED_DISPLAY_TIME
-import com.example.ladbrokes.util.MILLI_SECONDS
-import com.example.ladbrokes.util.Utility.formatSeconds
+import com.example.ladbrokes.data.EXPIRED_DISPLAY_TIME
+import com.example.ladbrokes.data.MILLI_SECONDS
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.isActive
@@ -117,7 +118,6 @@ fun RaceItem(
                                 textSize = textSize.times(TEXT_SCALE_REDUCTION_INTERVAL)
                             }
                         }
-                        // style = MaterialTheme.typography.h6
                     )
                     CompositionLocalProvider(LocalContentAlpha provides ContentAlpha.medium) {
                         Text(
@@ -159,7 +159,8 @@ fun CountDownIndicator(
             CircularProgressIndicatorBackGround(
                 modifier = Modifier
                     .height(size.dp)
-                    .width(size.dp),
+                    .width(size.dp)
+                    .testTag("circular progress indicator backGround"),
                 color = colorResource(R.color.purple_200),
                 stroke
             )
@@ -236,5 +237,11 @@ fun CircularProgressIndicatorBackGround(
         )
 
     })
+}
+
+fun Long.formatSeconds(): String = if (this < 60) {
+    this.toString()
+} else {
+    DateUtils.formatElapsedTime(this)
 }
 

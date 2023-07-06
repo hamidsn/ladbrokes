@@ -184,7 +184,7 @@ Text(
 )
 ```
 - Grouping layouts to have a bigger area for clicks: Checkbox has a tick and a text. We group these two and assign the delegate to the container This was we have larger clickable area and united contentDescription
-This ca be achieved by
+This can be achieved by
 ```python
 @Composable
 fun GroupedCheckbox(mItemList: List<String>, viewModel: HomeViewModel, filterList: Array<Boolean>) {
