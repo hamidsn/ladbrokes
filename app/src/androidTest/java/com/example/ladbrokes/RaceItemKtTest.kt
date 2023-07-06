@@ -10,7 +10,6 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.sp
 import com.example.ladbrokes.domain.model.race.Race
 import com.example.ladbrokes.ui.race.home.composables.RaceItem
-import org.junit.Assert.*
 import org.junit.Rule
 import org.junit.Test
 
