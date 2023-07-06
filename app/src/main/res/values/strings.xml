@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Ladbrokes</string>
+
+    <!--  HomeScreen  -->
+    <string name="home_title">Races</string>
+    <string name="reset_filter">Reset all filters</string>
+
+</resources>
