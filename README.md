@@ -98,7 +98,7 @@ We usually need database to support offline-first logic to hold data temporarily
 - In this app we use Flow to send data from domain layer to UI layer. There are three actions in our repository, `getRaces`, `getTimeFilteredRaces` and `getCategoryFilteredRaces`. They flow data to vieMModel. ViewModel converts that data to UI states. Follow flowing data, state will be updated and Composable items are observing states. When something is changed in the state, Ui will be automatically updated.
 - Our single source of UI's data is state that we define in viewModel. Therefore any change in the UI will follow states. An example is checkbox. When user clicks on it and change it from selected to unselected, we don't change the UI state. Data will be passed to viewModel, then repository will apply the logic and reproduce a new data to viewModel. viewModel will create a new state and then UI will be updated following on updated state.
 
-![screenshots/mad-arch-ui-udf.png] ![screenshots/mad-arch-overview-domain.png]
+<img src="screenshots/mad-arch-ui-udf.png"/> <img src="screenshots/mad-arch-overview-domain.png"/>
 
 Repository:
 ```python
@@ -140,8 +140,6 @@ val eventFlow = viewModel.eventFlow
 
 - adaptive layouts to support different form-factors.
 We check size of the display. If that is larger than a a specific size, then alignment of views instead of vertical views will be on a horizontal line.
-
-![screenshots/vertical.png] ![screenshots\horizontal.png]
 
 <img src="screenshots/vertical.png"/> <img src="screenshots/horizontal.png"/>
 
