@@ -80,7 +80,6 @@ fun RaceItem(
                 Column(
                     modifier = Modifier
                         .fillMaxWidth()
-                    //.align(Alignment.CenterVertically)
                 ) {
                     Text(
                         text = "Race number: ${item.race_number}",
@@ -103,7 +102,6 @@ fun RaceItem(
                 }
             } else {
                 Row(
-
                     verticalAlignment = Alignment.CenterVertically,
                     modifier = Modifier
                         .fillMaxWidth()
