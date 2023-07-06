@@ -47,8 +47,7 @@ Content-type: application/json
    application/json
 ```
 
-https://github.com/hamidsn/ladbrokes/tree/main/screenshots/timing-filter.mp4
-
+[![Video](https://www.youtube.com/shorts/cEBaXRL0iy0)
 
 ## Technologies & Methodologies which used:
 -	Jetpack Compose
