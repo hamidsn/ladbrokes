@@ -91,7 +91,7 @@ We usually need database to support offline-first logic to hold data temporarily
     list: List<Race>?
 ): Flow<Result<List<Race>>> = flow {
     val response = if ((list?.size ?: 0) < NUMBER_OF_DISPLAYED_RACES) {
-        api.getRaces().toListCharacters()
+        api.getRaces().toListRaces()
     } else {
         //offline-first
         list?.filter { it.seconds != selectedSeconds }
@@ -207,8 +207,6 @@ fun GroupedCheckbox(mItemList: List<String>, viewModel: HomeViewModel, filterLis
             )
             Text(text = item)
 ```
-
-
 
 
 

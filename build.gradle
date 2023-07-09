@@ -15,3 +15,19 @@ task clean(type: Delete) {
     delete rootProject.buildDir
 }
 
+ext {
+    // Sdk and tools
+    retrofitVersion = '2.9.0'
+    okhttpInterceptorVersion = '5.0.0-alpha.2'
+    hilt_compiler = '1.0.0'
+    hilt_android = '2.44.2'
+    coroutines='1.6.1'
+    junitVersion = '4.13.2'
+    androidXJunitVersion = '1.1.5'
+    espressoVersion = '3.5.1'
+    navigation_compose ='2.5.0-beta01'
+    viewmodel_compose = '2.5.0-beta01'
+    activity_compose = '1.5.1'
+    core_ktx = '1.8.0'
+    lifecycle_ktx = '2.3.1'
+}

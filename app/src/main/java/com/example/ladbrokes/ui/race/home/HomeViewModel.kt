@@ -1,8 +1,8 @@
 package com.example.ladbrokes.ui.race.home
 
+import androidx.annotation.VisibleForTesting
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.ladbrokes.data.EXPIRED_DISPLAY_TIME
 import com.example.ladbrokes.data.MILLI_SECONDS
 import com.example.ladbrokes.data.NUMBER_OF_DISPLAYED_RACES
 import com.example.ladbrokes.data.Result
@@ -11,7 +11,7 @@ import com.example.ladbrokes.domain.use_case.GetCategoryFilteredRacesUseCase
 import com.example.ladbrokes.domain.use_case.GetRacesUseCase
 import com.example.ladbrokes.domain.use_case.GetTimeFilteredRacesUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.delay
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -21,7 +21,10 @@ import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import java.util.Timer
 import javax.inject.Inject
+import kotlin.concurrent.fixedRateTimer
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(
@@ -35,34 +38,38 @@ class HomeViewModel @Inject constructor(
 
     private val _eventFlow = MutableSharedFlow<UIEvent>()
     val eventFlow = _eventFlow.asSharedFlow()
-    private val _filterList: Array<Boolean> = arrayOf(true, true, true)
+
+    @VisibleForTesting(otherwise = VisibleForTesting.PROTECTED)
+    val filterList: Array<Boolean> = arrayOf(true, true, true)
     private var offlineList: List<Race>? = emptyList()
     private var noFilters = true
+    private var fixedRateTimer: Timer = Timer()
 
     init {
         getRaces(getRacesUseCase())
     }
 
     fun setFilter(index: Int, isSelected: Boolean) {
-        _filterList[index] = isSelected
-        noFilters = _filterList[0] && _filterList[1] && _filterList[2]
+        filterList[index] = isSelected
+        noFilters = filterList[0] && filterList[1] && filterList[2]
         appLyFilters()
     }
 
     fun resetFilters() {
-        for (i in _filterList.indices) {
-            _filterList[i] = false
+        for (i in filterList.indices) {
+            filterList[i] = false
         }
-        noFilters = _filterList[0] && _filterList[1] && _filterList[2]
+        noFilters = filterList[0] && filterList[1] && filterList[2]
         appLyFilters()
     }
 
     private fun appLyFilters() {
         viewModelScope.launch {
+            fixedRateTimer.cancel()
             getRaces(
                 getCategoryFilteredRacesUseCase(
                     noFilters = noFilters,
-                    filterList = _filterList,
+                    filterList = filterList,
                     list = offlineList
                 )
             )
@@ -76,7 +83,7 @@ class HomeViewModel @Inject constructor(
                     is Result.Success -> {
                         getCategoryFilteredRacesUseCase(
                             noFilters = noFilters,
-                            filterList = _filterList,
+                            filterList = filterList,
                             list = result.data?.sortedBy { it.seconds }
                         )
                         offlineList =
@@ -88,7 +95,7 @@ class HomeViewModel @Inject constructor(
                                 characters = offlineList?.take(NUMBER_OF_DISPLAYED_RACES)
                                     ?: emptyList(),
                                 isLoading = false,
-                                filterList = _filterList,
+                                filterList = filterList,
                                 timeStamp = currentTimestamp
                             )
                         }
@@ -99,16 +106,38 @@ class HomeViewModel @Inject constructor(
                                 result.data?.sortedBy { it.seconds }?.get(0)?.seconds?.minus(
                                     System.currentTimeMillis() / MILLI_SECONDS
                                 )
-                            shortestTime?.apply {
-                                val totalSeconds = this@apply
-                                val tickSeconds = EXPIRED_DISPLAY_TIME
-                                for (second in totalSeconds downTo tickSeconds) {
-                                    delay(MILLI_SECONDS)
+
+                            withContext(Dispatchers.Default) {
+                                shortestTime?.apply {
+                                    val totalSeconds = this@apply + 60
+                                    if (totalSeconds < 0) {
+                                        getRaces(
+                                            getTimeFilteredRacesUseCase(
+                                                seconds ?: 0L,
+                                                offlineList
+                                            )
+                                        )
+                                    } else {
+                                        fixedRateTimer = fixedRateTimer(
+                                            name = "timer",
+                                            initialDelay = totalSeconds * 1000L,
+                                            period = totalSeconds * 1000L
+                                        ) {
+                                            viewModelScope.launch {
+                                                getRaces(
+                                                    getTimeFilteredRacesUseCase(
+                                                        seconds ?: 0L,
+                                                        offlineList
+                                                    )
+                                                )
+                                            }
+                                            this.cancel()
+                                        }
+                                    }
+
                                 }
-                                getRaces(getTimeFilteredRacesUseCase(seconds ?: 0L, offlineList))
                             }
                         } catch (e: IndexOutOfBoundsException) {
-
                             _eventFlow.emit(
                                 UIEvent.ShowSnackBar(
                                     result.message ?: "no race found"
@@ -142,4 +171,5 @@ class HomeViewModel @Inject constructor(
     sealed class UIEvent {
         data class ShowSnackBar(val message: String) : UIEvent()
     }
+
 }

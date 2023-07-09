@@ -24,7 +24,7 @@ class LadbokesActions(navController: NavController) {
     }
 
     val navigateToDetail = { id: Int ->
-        //todo, next page for detail of a selected race
+        //next page for detail of a selected race
         /*navController.navigate(Screen.Detail.passId(id)) {
             popUpTo(navController.graph.findStartDestination().id) {
                 saveState = true

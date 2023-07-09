@@ -7,3 +7,5 @@ const val NUMBER_OF_RACES = 10
 const val EXPIRED_DISPLAY_TIME = -60
 const val NUMBER_OF_DISPLAYED_RACES = 5
 const val MILLI_SECONDS = 1000L
+const val HTTP_ERROR_MESSAGE = "Oops, something went wrong"
+const val IO_ERROR_MESSAGE = "Couldn't reach server, check your internet connection"

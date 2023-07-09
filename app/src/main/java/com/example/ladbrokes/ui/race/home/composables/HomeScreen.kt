@@ -114,7 +114,7 @@ private fun HomeTopBar(
 }
 
 @Composable
-private fun HomeContent(
+fun HomeContent(
     modifier: Modifier = Modifier,
     onItemClicked: (Int) -> Unit,
     isLoading: Boolean = false,
